@@ -1,8 +1,8 @@
 # Este foi o trabalho final da Etapa 1 da disciplina de Programação Orientada a Objetos
 
-##Segue o enunciado do trabalho
+Segue o enunciado do trabalho
 
-###A lanchonete “Quase Três Lanches” está em fase de crescimento em seu delivery e
+A lanchonete “Quase Três Lanches” está em fase de crescimento em seu delivery e
 atendimento e pretende expandir seu funcionamento. Porém, os donos sempre operaram
 utilizando planilhas do Excel e ferramentas bastante simples, sendo assim, nenhum sistema
 personalizado foi criado e você pretende automatizar o trabalho desse estabelecimento. Na
