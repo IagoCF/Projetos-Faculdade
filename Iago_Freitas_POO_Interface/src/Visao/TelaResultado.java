@@ -8,15 +8,15 @@ public class TelaResultado extends JDialog {
     private JLabel valorId, valorNome, valorAutor, valorTipo;
 
     public TelaResultado(String nome) {
-        super((JFrame) null, "Dados do Usuario", true);
+        super((JFrame) null, "Dados de cadastro", true);
 
-        // Criando e posicionando os labels com os valores dos dados
+        String mensagem = nome + " cadastrado com sucesso!";
         
-        valorNome = new JLabel(nome);
+        //labels
+        valorNome = new JLabel(mensagem);
         valorNome.setBounds(90, 10, 200, 25);
         add(valorNome);
 
-        // Definindo layout e propriedades da tela
         setLayout(null);
         setSize(320, 150);
         setVisible(true);

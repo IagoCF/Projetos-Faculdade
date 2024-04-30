@@ -11,14 +11,14 @@ import java.util.Date;
 public class CadastroCategoriaInterface extends JFrame implements ActionListener {
 
     private JLabel labelId, labelNome;
-    private JFormattedTextField campoId; // Alterado para JFormattedTextField
+    private JFormattedTextField campoId;
     private JTextField campoNome;
     private JButton botaoEnviar;
 
     public CadastroCategoriaInterface() {
         super("Cadastrar Categoria do Livro");
 
-        // Criando e posicionando os labels
+        //labels
         labelId = new JLabel("ID:");
         labelId.setBounds(10, 10, 80, 25);
         add(labelId);
@@ -27,7 +27,7 @@ public class CadastroCategoriaInterface extends JFrame implements ActionListener
         labelNome.setBounds(10, 40, 80, 25);
         add(labelNome);
 
-        // Criando e posicionando os campos de texto
+        //campos
         try {
             MaskFormatter formatter = new MaskFormatter("#####");
             formatter.setPlaceholderCharacter('0');
@@ -42,13 +42,13 @@ public class CadastroCategoriaInterface extends JFrame implements ActionListener
         campoNome.setBounds(90, 40, 200, 25);
         add(campoNome);
 
-        // Criando e posicionando o botão "Enviar"
+        //botão Enviar
         botaoEnviar = new JButton("Enviar");
         botaoEnviar.setBounds(100, 70, 100, 25);
-        botaoEnviar.addActionListener(this); // Adicionando listener ao botão
+        botaoEnviar.addActionListener(this);
         add(botaoEnviar);
 
-        // Definindo layout e propriedades da tela
+        //tela
         setLayout(null);
         setSize(320, 150);
         setVisible(true);
@@ -58,7 +58,7 @@ public class CadastroCategoriaInterface extends JFrame implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == botaoEnviar) {
-            int idLivro = Integer.parseInt(campoId.getText()); // Convertendo o texto do campoId para int
+            int idLivro = Integer.parseInt(campoId.getText());
             
             TelaResultado telaImpressao = new TelaResultado(campoNome.getText());
             telaImpressao.setVisible(true);

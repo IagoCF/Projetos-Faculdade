@@ -3,6 +3,8 @@ package Visao;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import Controle.CadastrarLivroController;
+
+import java.awt.GridLayout;
 import java.awt.event.*;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -13,17 +15,17 @@ import javax.swing.AbstractButton;
 
 public class CadastroLivroInterface extends JFrame implements ActionListener {
 
-    private JRadioButton fisicoRadioButton;
-    private JRadioButton digitalRadioButton;
+    private JRadioButton fisicoRadioButton, digitalRadioButton;
+    private JCheckBox romanceCheckBox, policialCheckBox, terrorCheckBox, ficcaoCheckBox, infantilCheckBox;
     private JLabel labelId, labelNome, labelAutor, labelTipo;
-    private JFormattedTextField campoId; // Alterado para JFormattedTextField
+    private JFormattedTextField campoId;
     private JTextField campoNome, campoAutor, campoTipo;
     private JButton botaoEnviar;
 
     public CadastroLivroInterface() {
         super("Cadastrar Livro");
 
-        // Criando e posicionando os labels
+        //labels
         labelId = new JLabel("ID:");
         labelId.setBounds(10, 10, 80, 25);
         add(labelId);
@@ -40,7 +42,7 @@ public class CadastroLivroInterface extends JFrame implements ActionListener {
         labelTipo.setBounds(10, 100, 80, 25);
         add(labelTipo);
 
-        // Criando e posicionando os campos de texto
+        //campos
         try {
             MaskFormatter formatter = new MaskFormatter("#####");
             formatter.setPlaceholderCharacter('0');
@@ -58,20 +60,29 @@ public class CadastroLivroInterface extends JFrame implements ActionListener {
         campoAutor = new JTextField();
         campoAutor.setBounds(90, 70, 200, 25);
         add(campoAutor);
+        
+        //radio buttons
+        fisicoRadioButton = new JRadioButton("Físico");
+        digitalRadioButton = new JRadioButton("Digital");
+        ButtonGroup grupoTipo = new ButtonGroup();
+        grupoTipo.add(fisicoRadioButton);
+        grupoTipo.add(digitalRadioButton);
+        
+        fisicoRadioButton.setBounds(90, 100, 100, 25);
+        digitalRadioButton.setBounds(230, 100, 100, 25);
+        add(labelTipo);
+        add(fisicoRadioButton);
+        add(digitalRadioButton);
 
-        campoTipo = new JTextField();
-        campoTipo.setBounds(90, 100, 200, 25);
-        add(campoTipo);
-
-        // Criando e posicionando o botão "Enviar"
+        //botão Enviar
         botaoEnviar = new JButton("Enviar");
-        botaoEnviar.setBounds(100, 130, 100, 25);
-        botaoEnviar.addActionListener(this); // Adicionando listener ao botão
+        botaoEnviar.setBounds(140, 140, 100, 25);
+        botaoEnviar.addActionListener(this);
         add(botaoEnviar);
 
-        // Definindo layout e propriedades da tela
+        //tela
         setLayout(null);
-        setSize(320, 150);
+        setSize(330, 220);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -79,14 +90,23 @@ public class CadastroLivroInterface extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == botaoEnviar) {
-            int idLivro = Integer.parseInt(campoId.getText()); // Convertendo o texto do campoId para int
+            int idLivro = Integer.parseInt(campoId.getText());
             
             TelaResultado telaImpressao = new TelaResultado(campoNome.getText());
             telaImpressao.setVisible(true);
             
+            String tipo;
+            if (fisicoRadioButton.isSelected()) {
+    			tipo = "Físico";
+    		}else if (digitalRadioButton.isSelected() ){
+    			tipo = "Digital";
+    		}else {
+    			tipo = "Não Informado";
+    		}
+            
             try {
                 CadastrarLivroController cadastrarLivroController = new CadastrarLivroController();
-                cadastrarLivroController.salvarLivro(idLivro, campoNome.getText(), campoAutor.getText(), new Date(), campoTipo.getText());
+                cadastrarLivroController.salvarLivro(idLivro, campoNome.getText(), campoAutor.getText(), new Date(), tipo);
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
