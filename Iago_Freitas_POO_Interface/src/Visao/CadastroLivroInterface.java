@@ -16,7 +16,6 @@ import javax.swing.AbstractButton;
 public class CadastroLivroInterface extends JFrame implements ActionListener {
 
     private JRadioButton fisicoRadioButton, digitalRadioButton;
-    private JCheckBox romanceCheckBox, policialCheckBox, terrorCheckBox, ficcaoCheckBox, infantilCheckBox;
     private JLabel labelId, labelNome, labelAutor, labelTipo;
     private JFormattedTextField campoId;
     private JTextField campoNome, campoAutor, campoTipo;
@@ -82,7 +81,7 @@ public class CadastroLivroInterface extends JFrame implements ActionListener {
 
         //tela
         setLayout(null);
-        setSize(330, 220);
+        setSize(350, 220);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

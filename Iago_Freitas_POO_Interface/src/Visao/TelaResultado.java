@@ -14,7 +14,7 @@ public class TelaResultado extends JDialog {
         
         //labels
         valorNome = new JLabel(mensagem);
-        valorNome.setBounds(90, 10, 200, 25);
+        valorNome.setBounds(20, 10, 300, 25);
         add(valorNome);
 
         setLayout(null);

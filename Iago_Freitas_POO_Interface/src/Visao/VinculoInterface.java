@@ -13,6 +13,7 @@ public class VinculoInterface extends JFrame implements ActionListener {
     private JLabel labelIdLivro, labelIdCategoria;
     private JFormattedTextField campoIdLivro, campoIdCategoria;
     private JButton botaoEnviar;
+    private JCheckBox romanceCheckBox, policialCheckBox, terrorCheckBox, ficcaoCheckBox, infantilCheckBox;
 
     public VinculoInterface() {
         super("Vincular Livro a uma Categoria");
@@ -26,7 +27,7 @@ public class VinculoInterface extends JFrame implements ActionListener {
         labelIdCategoria.setBounds(10, 40, 80, 25);
         add(labelIdCategoria);
 
-        //texto
+        //campo ID
         try {
             MaskFormatter formatter = new MaskFormatter("#####");
             formatter.setPlaceholderCharacter('0');
@@ -36,26 +37,37 @@ public class VinculoInterface extends JFrame implements ActionListener {
         }
         campoIdLivro.setBounds(90, 10, 200, 25);
         add(campoIdLivro);
-
-        try {
-            MaskFormatter formatter = new MaskFormatter("#####");
-            formatter.setPlaceholderCharacter('0');
-            campoIdCategoria = new JFormattedTextField(formatter);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        campoIdCategoria.setBounds(90, 40, 200, 25);
-        add(campoIdCategoria);
+        
+        //campos checkbox
+        romanceCheckBox = new JCheckBox("Romance");
+        romanceCheckBox.setBounds(90, 40, 80, 25);
+        add(romanceCheckBox);
+        
+        policialCheckBox = new JCheckBox("Policial");
+        policialCheckBox.setBounds(180, 40, 80, 25);
+        add(policialCheckBox);
+        
+        terrorCheckBox = new JCheckBox("Terror");
+        terrorCheckBox.setBounds(270, 40, 80, 25);
+        add(terrorCheckBox);
+        
+        ficcaoCheckBox = new JCheckBox("Ficção Científica");
+        ficcaoCheckBox.setBounds(90, 70, 180, 25);
+        add(ficcaoCheckBox);
+        
+        infantilCheckBox = new JCheckBox("Infantil");
+        infantilCheckBox.setBounds(270, 70, 80, 25);
+        add(infantilCheckBox);
 
         //botão Enviar
         botaoEnviar = new JButton("Enviar");
-        botaoEnviar.setBounds(100, 70, 100, 25);
+        botaoEnviar.setBounds(100, 110, 100, 25);
         botaoEnviar.addActionListener(this);
         add(botaoEnviar);
 
         //tela
         setLayout(null);
-        setSize(320, 150);
+        setSize(350, 220);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -64,17 +76,63 @@ public class VinculoInterface extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == botaoEnviar) {
             int idLivro = Integer.parseInt(campoIdLivro.getText());
-            int idCategoria = Integer.parseInt(campoIdCategoria.getText());
+            int idCategoria = 00000;
             
             TelaResultado telaImpressao = new TelaResultado("Vínculo");
             telaImpressao.setVisible(true);
             
-            try {
-                VincularController vincularController = new VincularController();
-                vincularController.vincular(idLivro, idCategoria);
-            } catch (SQLException e1) {
-                e1.printStackTrace();
+            if(romanceCheckBox.isSelected()) {
+            	idCategoria = 10000;
+	            try {
+	                VincularController vincularController1 = new VincularController();
+	                vincularController1.vincular(idLivro, idCategoria);
+	            } catch (SQLException e1) {
+	                e1.printStackTrace();
+	            }
             }
+            
+            if(policialCheckBox.isSelected()) {
+            	idCategoria = 20000;
+	            try {
+	                VincularController vincularController2 = new VincularController();
+	                vincularController2.vincular(idLivro, idCategoria);
+	            } catch (SQLException e1) {
+	                e1.printStackTrace();
+	            }
+            }
+            
+            if(terrorCheckBox.isSelected()) {
+            	
+            	idCategoria = 30000;
+	            try {
+	                VincularController vincularController3 = new VincularController();
+	                vincularController3.vincular(idLivro, idCategoria);
+	            } catch (SQLException e1) {
+	                e1.printStackTrace();
+	            }
+            }
+            
+            if(ficcaoCheckBox.isSelected()) { 	
+            	idCategoria = 40000;
+	            try {
+	                VincularController vincularController4 = new VincularController();
+	                vincularController4.vincular(idLivro, idCategoria);
+	            } catch (SQLException e1) {
+	                e1.printStackTrace();
+	            }
+            }
+            
+            if(infantilCheckBox.isSelected()) {
+            	idCategoria = 50000;
+	            try {
+	                VincularController vincularController5 = new VincularController();
+	                vincularController5.vincular(idLivro, idCategoria);
+	            } catch (SQLException e1) {
+	                e1.printStackTrace();
+	            }
+            }
+            
+            
         }
     }
 }

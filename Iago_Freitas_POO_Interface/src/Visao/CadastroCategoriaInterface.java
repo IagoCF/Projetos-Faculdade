@@ -50,7 +50,7 @@ public class CadastroCategoriaInterface extends JFrame implements ActionListener
 
         //tela
         setLayout(null);
-        setSize(320, 150);
+        setSize(350, 220);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

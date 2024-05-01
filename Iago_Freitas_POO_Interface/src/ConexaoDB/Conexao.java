@@ -28,9 +28,9 @@ public class Conexao {
         if (conexao != null) {
             try {
                 conexao.close();
-                System.out.println("ConexÃ£o com o banco de dados fechada.");
+                System.out.println("Conexão com o banco de dados fechada.");
             } catch (SQLException e) {
-                System.out.println("Erro ao fechar a conexÃ£o com o banco de dados: " + e.getMessage());
+                System.out.println("Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
             }
         }
     }
