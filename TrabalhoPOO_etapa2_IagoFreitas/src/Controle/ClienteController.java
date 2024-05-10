@@ -98,10 +98,4 @@ public class ClienteController implements ActionListener {
             JOptionPane.showMessageDialog(view, "Erro ao deletar cliente: " + ex.getMessage());
         }
     }
-
-    public static void main(String[] args) {
-        ClienteView view = new ClienteView();
-        ClienteDAO dao = new ClienteDAO(ConexaoDAO.obterConexao());
-        ClienteController controller = new ClienteController(view, dao);
-    }
 }

@@ -7,24 +7,21 @@ import java.text.ParseException;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 
-import Controle.ClienteController;
-
 public class ClienteView extends JFrame implements ActionListener{
 
 	public JButton cadastrar, editar, remover;
 	private JLabel cpf, nome, email, nascimento;
-	public JFormattedTextField campoCpf;
-	public JTextField campoNome, campoEmail, campoNascimento;
+	public JTextField campoCpf, campoNome, campoEmail, campoNascimento;
 	
 	public ClienteView() {
-		super("Cliente");
+		super("Setor de Clientes");
 		
         //labels
         cpf = new JLabel("CPF:");
         cpf.setBounds(10, 10, 80, 25);
         add(cpf);
 
-        nome = new JLabel("Nome");
+        nome = new JLabel("Nome:");
         nome.setBounds(10, 40, 80, 25);
         add(nome);
 
@@ -38,7 +35,7 @@ public class ClienteView extends JFrame implements ActionListener{
         
       //campos
         try {
-            MaskFormatter formatter = new MaskFormatter("#####");
+            MaskFormatter formatter = new MaskFormatter("####");
             formatter.setPlaceholderCharacter('0');
             campoCpf = new JFormattedTextField(formatter);
         } catch (ParseException e) {

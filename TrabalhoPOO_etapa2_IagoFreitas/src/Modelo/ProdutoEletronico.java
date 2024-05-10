@@ -1,10 +1,10 @@
 package Modelo;
 
 public class ProdutoEletronico extends Produto{
-	public ProdutoEletronico(Integer codigo, Integer quantidade, String nome,
+	
+	public ProdutoEletronico(Integer quantidade, String nome,
 							String descricao, String categoria, Double precoCusto,
 							Double precoVenda){
-		this.codigo = codigo;
 		this.quantidade = quantidade;
 		this.nome = nome;
 		this.descricao = descricao;

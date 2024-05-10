@@ -2,10 +2,8 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 import Modelo.Cliente;
 
 public class ClienteDAO {
@@ -41,7 +39,7 @@ public class ClienteDAO {
 
     //Delete
     public void removerCliente(Integer cpf) throws SQLException {
-        String query = "DELETE FROM cliente WHERE cpf=?";
+        String query = "DELETE FROM cliente WHERE cpf = ?";
         try (PreparedStatement stmt = conexao.prepareStatement(query)) {
             stmt.setInt(1, cpf);
             stmt.executeUpdate();
