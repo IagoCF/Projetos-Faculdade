@@ -1,6 +1,8 @@
-###Repositório para o trabalho da segunda etapa da disciplina de Programação Orientada a Objetos
+# Repositório para o trabalho da segunda etapa da disciplina de Programação Orientada a Objetos
 
-Objetivo do trabalho: Implementar todas as funcionalidades vista até o momento, como os pilares da POO, classes abstratas, banco de dados, interface, entre outros.
+## Objetivo do trabalho: Implementar todas as funcionalidades vista até o momento, como os pilares da POO, classes abstratas, banco de dados, interface, entre outros.
+
+Enunciado do trabalho:
 
 Crie as classes abstratas Produto e FormaPagamento. A classe Produto deve conter atributos
 como código, nome, descrição, preço de custo, preço de venda, quantidade em estoque e
