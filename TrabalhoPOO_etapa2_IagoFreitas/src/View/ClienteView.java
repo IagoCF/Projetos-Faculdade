@@ -35,7 +35,7 @@ public class ClienteView extends JFrame implements ActionListener{
         
       //campos
         try {
-            MaskFormatter formatter = new MaskFormatter("####");
+            MaskFormatter formatter = new MaskFormatter("###########");
             formatter.setPlaceholderCharacter('0');
             campoCpf = new JFormattedTextField(formatter);
         } catch (ParseException e) {

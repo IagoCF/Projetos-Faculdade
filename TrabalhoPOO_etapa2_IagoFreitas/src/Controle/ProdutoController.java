@@ -39,11 +39,11 @@ public class ProdutoController implements ActionListener {
         } else if (e.getSource() == view.remover) {
             removerProduto();
         } else if (e.getSource() == view.buscaCodigo) {
-        	//buscarProdutoCodigo();
+        	buscarProdutoCodigo();
         } else if (e.getSource() == view.buscaNome) {
-        	//buscarProdutoNome();
+        	buscarProdutoNome();
         } else if (e.getSource() == view.buscaCategoria) {
-        	//buscarProdutoCategoria();
+        	buscarProdutoCategoria();
         }
     }
 
@@ -145,5 +145,43 @@ public class ProdutoController implements ActionListener {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(view, "Erro ao deletar produto: " + ex.getMessage());
         }
+    }
+    
+    private void buscarProdutoCodigo() {
+    	int codigo = Integer.parseInt(view.campoCodigo.getText());
+    	
+    	try {
+    		dao.consultarProdutoCodigo(codigo);
+    	} catch (SQLException ex){
+    		JOptionPane.showMessageDialog(view, "Erro ao buscar produto: " + ex.getMessage());
+    	}
+    }
+    
+    private void buscarProdutoNome() {
+    	String nome = view.campoNome.getText();
+    	
+    	try {
+    		dao.consultarProdutoNome(nome);
+    	} catch (SQLException ex){
+    		JOptionPane.showMessageDialog(view, "Erro ao buscar produto: " + ex.getMessage());
+    	}
+    }
+    
+    private void buscarProdutoCategoria() {
+    	String categoria = null;
+        
+        if (view.cat1.isSelected()) {
+            categoria = "Alimentício";
+        } else if (view.cat2.isSelected()) {
+            categoria = "Eletrônico";
+        } else if (view.cat3.isSelected()) {
+            categoria = "Limpeza";
+        }
+    	
+    	try {
+    		dao.consultarProdutoCategoria(categoria);
+    	} catch (SQLException ex){
+    		JOptionPane.showMessageDialog(view, "Erro ao buscar produto: " + ex.getMessage());
+    	}
     }
 }

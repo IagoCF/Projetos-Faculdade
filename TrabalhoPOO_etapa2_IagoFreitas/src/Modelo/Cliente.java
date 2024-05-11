@@ -1,16 +1,17 @@
 package Modelo;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 public class Cliente {
-	private Integer cpf;
+	private BigInteger cpf;
 	private String nome, email;
 	private Date dataNascimento;
 	
-	public Integer getCpf() {
+	public BigInteger getCpf() {
 		return cpf;
 	}
-	public void setCpf(Integer cpf) {
+	public void setCpf(BigInteger cpf) {
 		this.cpf = cpf;
 	}
 	public String getNome() {
@@ -32,7 +33,7 @@ public class Cliente {
 		this.dataNascimento = dataNascimento;
 	}
 	
-	public Cliente(Integer cpf, String nome, String email, Date dataNascimento) {
+	public Cliente(BigInteger cpf, String nome, String email, Date dataNascimento) {
 		this.cpf = cpf;
 		this.nome = nome;
 		this.email = email;

@@ -7,6 +7,7 @@ import View.ClienteView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigInteger;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.text.ParseException;
@@ -36,10 +37,11 @@ public class ClienteController implements ActionListener {
     }
 
     private void cadastrarCliente() {
-        int cpf = Integer.parseInt(view.campoCpf.getText());
+    	BigInteger cpf = new BigInteger(view.campoCpf.getText());
         String nome = view.campoNome.getText();
         String email = view.campoEmail.getText();
         String dataTexto = view.campoNascimento.getText();
+        
 
         //Formatação da data
         java.util.Date nascimento = null;
@@ -62,7 +64,7 @@ public class ClienteController implements ActionListener {
     }
 
     private void editarCliente() {
-        int cpf = Integer.parseInt(view.campoCpf.getText());
+    	BigInteger cpf = new BigInteger(view.campoCpf.getText());
         String nome = view.campoNome.getText();
         String email = view.campoEmail.getText();
         String dataTexto = view.campoNascimento.getText();
@@ -89,7 +91,7 @@ public class ClienteController implements ActionListener {
 
 
     private void removerCliente() {
-    	int cpf = Integer.parseInt(view.campoCpf.getText());
+    	BigInteger cpf = new BigInteger(view.campoCpf.getText());
 
     	try {
             dao.removerCliente(cpf);

@@ -2,9 +2,17 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import Modelo.Produto;
+import Modelo.ProdutoAlimenticio;
+import Modelo.ProdutoEletronico;
+import Modelo.ProdutoLimpeza;
 
 public class ProdutoDAO {
 	private Connection conexao;
@@ -27,30 +35,57 @@ public class ProdutoDAO {
     	}
     }
     
-    //Consulta por codigo
+  //Consulta por codigo
     public void consultarProdutoCodigo(Integer codigo) throws SQLException{
-    	String query = "SELECT * FROM produto WHERE codigo = ?";
-    	try (PreparedStatement stmt = conexao.prepareStatement(query)) {
+        String query = "SELECT nome, quantidade FROM produto WHERE codigo = ?";
+        try (PreparedStatement stmt = conexao.prepareStatement(query)) {
             stmt.setInt(1, codigo);
-            stmt.executeUpdate();
-    	}
+            try (ResultSet resultado = stmt.executeQuery()){
+                while(resultado.next()) {
+                    String nome = resultado.getString("nome");
+                    Integer quantidade = resultado.getInt("quantidade");
+                    
+                    consultaCodigo(codigo, nome, quantidade);
+                }
+            }
+        }
     }
+    
+    private void consultaCodigo(Integer codigo, String nome, Integer quantidade) {
+        JOptionPane.showMessageDialog(null, "Codigo: " + codigo + "\nNome: " + nome + "\nQuantidade: " + quantidade);
+    }
+ 
     
     //Consulta por nome
     public void consultarProdutoNome(String nome) throws SQLException{
-    	String query = "SELECT * FROM produto WHERE nome = ?";
+    	String query = "SELECT codigo, quantidade FROM produto WHERE nome = ?";
     	try (PreparedStatement stmt = conexao.prepareStatement(query)) {
             stmt.setString(1, nome);
-            stmt.executeUpdate();
+            try (ResultSet resultado = stmt.executeQuery()){
+                while(resultado.next()) {
+                    Integer codigo = resultado.getInt("codigo");
+                    Integer quantidade = resultado.getInt("quantidade");
+                    
+                    consultaCodigo(codigo, nome, quantidade);
+                }
+            }
     	}
     }
     
     //Consulta por categoria
     public void consultarProdutoCategoria(String categoria) throws SQLException{
-    	String query = "SELECT * FROM produto WHERE categoria = ?";
+    	String query = "SELECT codigo, nome, quantidade FROM produto WHERE categoria = ?";
     	try (PreparedStatement stmt = conexao.prepareStatement(query)) {
             stmt.setString(1, categoria);
-            stmt.executeUpdate();
+            try (ResultSet resultado = stmt.executeQuery()){
+                while(resultado.next()) {
+                    Integer codigo = resultado.getInt("codigo");
+                    String nome = resultado.getString("nome");
+                    Integer quantidade = resultado.getInt("quantidade");
+                    
+                    consultaCodigo(codigo, nome, quantidade);
+                }
+            }
     	}
     }
     
