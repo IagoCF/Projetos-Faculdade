@@ -52,7 +52,7 @@ public class TelaInicialView extends JFrame implements ActionListener{
 	        ProdutoDAO dao = new ProdutoDAO(ConexaoDAO.obterConexao());
 	        ProdutoController controller = new ProdutoController(view, dao);
         } else if (e.getSource() == venda) {
-            
+            VendaView view = new VendaView();
         }
 	}
 

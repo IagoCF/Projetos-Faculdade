@@ -1,18 +1,19 @@
 package Modelo;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Venda {
-	private Cliente cliente;
+	private BigInteger cliente;
 	private ArrayList<Produto> produto;
 	private FormaPagamento pagamento;
 	private Date dataVenda;
 	
-	public Cliente getCliente() {
+	public BigInteger getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(BigInteger cliente) {
 		this.cliente = cliente;
 	}
 	public ArrayList<Produto> getProduto() {
@@ -34,7 +35,7 @@ public class Venda {
 		this.dataVenda = dataVenda;
 	}
 	
-	public Venda(Cliente cliente, ArrayList<Produto> produto, FormaPagamento pagamento, Date dataVenda) {
+	public Venda(BigInteger cliente, ArrayList<Produto> produto, FormaPagamento pagamento, Date dataVenda) {
 		super();
 		this.cliente = cliente;
 		this.produto = produto;

@@ -9,7 +9,6 @@ public class ProdutoView extends JFrame implements ActionListener{
 	private JLabel codigo, nome, descricao, precoCusto, precoVenda, quantidade, categoria;
 	public JTextField campoCodigo, campoNome, campoDescricao, campoQuantidade, campoCusto, campoVenda;
 	public JRadioButton cat1, cat2, cat3;
-	public String cat;
 	
 	public ProdutoView() {
 		super("Setor de Produtos");
